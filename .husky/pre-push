@@ -1,10 +1,47 @@
 #!/bin/bash
 
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+# Helper function to validate branch naming conventions
+validate_branch() {
+  local branch_name=$1
+  local regex="^(feat|fix|chore|docs|style|refactor|perf|test)/"
+  if [[ ! "$branch_name" =~ $regex ]]; then
+    echo "Error: Branch '$branch_name' does not follow naming conventions ($regex)." >&2
+    exit 1
+  fi
+}
 
-if [[ "$current_branch" == "main" ]]; then
-  echo "Error: Pushing directly to 'main' is not allowed. Please push to a feature or a bug branch."
+# Ensure upstream remote is configured
+upstream_url=$(git remote get-url upstream 2>/dev/null)
+if [[ -z "$upstream_url" ]]; then
+  echo "Error: 'upstream' remote is not configured. Run 'git remote add upstream <url>'." >&2
   exit 1
 fi
 
+# Get the branch being pushed to
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [[ -z "$branch" ]]; then
+  echo "Error: Could not determine the current branch. Ensure you're in a valid Git repository." >&2
+  exit 1
+fi
+
+# Determine if the push is targeting 'main'
+if [[ "$branch" == "main" ]]; then
+  # Validate the branch name of the source branch
+  source_branch=$(git rev-parse --abbrev-ref @{upstream} 2>/dev/null)
+  if [[ "$source_branch" =~ ^upstream/ ]]; then
+    echo "Error: Code in 'staging' branch must come from branches in forked repositories." >&2
+    exit 1
+  fi
+  validate_branch "$branch"
+fi
+
+# Run linters before allowing the push
+echo "Running linters..."
 pnpm run lint
+if [[ $? -ne 0 ]]; then
+  echo "Error: Linters failed. Fix the issues and try again." >&2
+  exit 1
+fi
+
+echo "Push checks passed successfully."
+exit 0
