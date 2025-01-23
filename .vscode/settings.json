@@ -1,0 +1,57 @@
+{
+  "[go]": {
+    "editor.tabSize": 4
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": true,
+      "other": true,
+      "strings": true
+    }
+  },
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "astro",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/Thumbs.db": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "javascript.validate.enable": false,
+  "prettier.documentSelectors": ["**/*.astro"],
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "package-lock.json": true,
+    "pnpm-lock.yaml": true,
+    "yarn.lock": true
+  }
+}

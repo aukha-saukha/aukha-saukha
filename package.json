@@ -1,10 +1,32 @@
 {
-  "author": "",
-  "description": "",
+  "description": "This content repository powers Aukha Saukha.",
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/markdown": "^6.2.1",
+    "commitizen": "^4.3.1",
+    "cspell": "^8.17.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.18.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.1",
+    "markdownlint": "^0.37.4",
+    "markdownlint-cli2": "^0.17.2",
+    "micromatch": "^4.0.8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1"
+  },
   "keywords": [],
-  "license": "ISC",
-  "main": "index.js",
+  "license": "MIT",
   "name": "aukha-saukha",
-  "scripts": {},
+  "scripts": {
+    "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:scripts && pnpm run lint:spellings",
+    "lint:formatting": "prettier --list-different '**/*.{astro,css,html,js,json,jsx,md,scss,ts,tsx}'",
+    "lint:markdown": "markdownlint-cli2 '**/*.{md,mdx}'",
+    "lint:scripts": "eslint --cache '**/*.{astro,cjs,js,jsx,mjs,ts,tsx}'",
+    "lint:spellings": "cspell --cache --no-must-find-files --quiet '**/*.*'",
+    "prepare": "husky"
+  },
+  "type": "module",
   "version": "1.0.0"
 }

@@ -1,0 +1,29 @@
+# The top-most Editor configuration file.
+root = true
+
+
+# The following settings are applicable to all file types.
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 100
+trim_trailing_whitespace = true
+
+
+# The following settings override all-file settings for Golang files.
+[*.go]
+indent_size = 4
+
+
+# The following settings override all-file settings for Markdown files.
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+
+# The following settings override all-file settings for Python files.
+[*.py]
+indent_size = 4

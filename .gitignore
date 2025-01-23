@@ -1,0 +1,24 @@
+# Cache
+.cspellcache
+.eslintcache
+
+
+# Distributable
+dist/
+
+
+# Frameworks Related
+# Astro
+.astro/
+
+# Next.js
+.next/
+
+
+# Project Dependencies and Development Dependencies
+node_modules/
+
+
+# System Files
+.DS_Store
+Thumbs.db
