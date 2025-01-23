@@ -1,0 +1,44 @@
+{
+  "CSS Copyright Header": {
+    "body": [
+      "/* -------------------------------------------------------------------------------------------------",
+      " * @copyright: The Maryada Group and its affiliates.",
+      " * @license: This source code is licensed under the MIT license found in the LICENSE file in the",
+      " * root directory of this source tree.",
+      " * ---------------------------------------------------------------------------------------------- */",
+      "",
+      "$1",
+    ],
+    "description": "Inserts a copyright header for CSS, SCSS files",
+    "prefix": [";cr", "copyright"],
+    "scope": "css,scss",
+  },
+  "JavaScript/TypeScript, React (optional) Copyright Header": {
+    "body": [
+      "/* -------------------------------------------------------------------------------------------------",
+      " * @copyright: The Maryada Group and its affiliates.",
+      " * @license: This source code is licensed under the MIT license found in the LICENSE file in the",
+      " * root directory of this source tree.",
+      " * ---------------------------------------------------------------------------------------------- */",
+      "",
+      "$1",
+    ],
+    "description": "Inserts a copyright header for JavaScript, React files",
+    "prefix": [";cr", "copyright"],
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+  },
+  "Python, Shell, YAML Copyright Header": {
+    "body": [
+      "# --------------------------------------------------------------------------------------------------",
+      "# @copyright: The Maryada Group and its affiliates.",
+      "# @license: This source code is licensed under the MIT license found in the LICENSE file in the",
+      "# root directory of this source tree.",
+      "# --------------------------------------------------------------------------------------------------",
+      "",
+      "$1",
+    ],
+    "description": "Inserts a copyright header for Python, Shell scripts, and YAML files",
+    "prefix": [";cr", "copyright"],
+    "scope": "python,shellscript,yaml",
+  },
+}

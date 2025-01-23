@@ -1,0 +1,25 @@
+{
+  "dictionaries": ["company-names", "english", "hindi"],
+  "dictionaryDefinitions": [
+    {
+      "addWords": true,
+      "name": "company-names",
+      "path": "./dictionaries/company-names.txt"
+    },
+    {
+      "addWords": true,
+      "name": "english",
+      "path": "./dictionaries/english.txt"
+    },
+    {
+      "addWords": true,
+      "name": "hindi",
+      "path": "./dictionaries/hindi.txt"
+    }
+  ],
+  "ignorePaths": ["dist/**", "node_modules/**", "package-lock.yaml", "pnpm-lock.yaml", "yarn.lock"],
+  "ignoreWords": [],
+  "import": [],
+  "version": "0.2",
+  "words": []
+}
