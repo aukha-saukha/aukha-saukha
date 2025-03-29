@@ -1,0 +1,61 @@
+name: Merge workflow
+
+description: >
+  This workflow is triggered when a pull request is merged in the "Aukha Saukha" public repository.
+  The workflow:
+    - Generates a GitHub App token.
+    - Triggers a repository_dispatch event in the primary repository.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  notify:
+    if: github.event.pull_request.merged == true && github.repository == 'aukha-saukha/aukha-saukha'
+    runs-on: ubuntu-latest
+    steps:
+      - id: generate-token
+        name: Generate GitHub App token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.AS_REPO_DISPATCHER_GITHUB_APP_ID }}
+          private-key: ${{ secrets.AS_REPO_DISPATCHER_GITHUB_APP_PRIVATE_KEY }}
+
+      - name: Trigger repository dispatch event
+        run: |
+          set -e
+          echo "Processing merged PR #${{ github.event.pull_request.number }}"
+          COMMIT_SHA="${{ github.event.pull_request.merge_commit_sha }}"
+          MERGED_BY="${{ github.actor }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+
+          for i in {1..3}; do
+            if curl --max-time 30 -s -S -f -X POST "${{ secrets.PRIMARY_REPO_API_URL }}" \
+              -d '{
+                "client_payload": {
+                  "commit_sha": "'"$COMMIT_SHA"'",
+                  "merged_by": "'"$MERGED_BY"'",
+                  "pr_number": "'"$PR_NUMBER"'",
+                  "ref": "main"
+                },
+                "event_type": "merge_event_in_aukha_saukha_public_repo"
+              }' \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: Bearer ${{ steps.generate-token.outputs.token }}" \
+              -H "Content-Type: application/json"; then
+              echo "✅ Successfully triggered repository dispatch event"
+              break
+            else
+              EXIT_CODE=$?
+              echo "❌ Attempt $i failed with exit code $EXIT_CODE. Retrying in 5 seconds..."
+              if [ $i -eq 3 ]; then
+                echo "❌ All retry attempts failed. Exiting with error."
+                exit 1
+              fi
+              sleep 5
+            fi
+          done
