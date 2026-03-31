@@ -1,0 +1,45 @@
+# Build
+dist/
+
+
+# Cache
+.astro/
+.cspellcache
+.eslintcache
+.firebase/
+
+
+# Dependencies
+node_modules/
+
+
+# Editor
+# JetBrains IDEs (WebStorm, IntelliJ) personal workspace files
+.idea/
+# Vim/Neovim swap files — e.g. .swp, .swo
+*.sw?
+# VS Code personal settings
+.vscode/settings.json
+
+
+# Environment variables
+.env*
+!.env.example
+
+
+# Logs
+logs/
+*.log
+
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+
+# pnpm
+.pnpm-store/
+
+
+# TypeScript
+*.tsbuildinfo
