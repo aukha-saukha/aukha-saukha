@@ -37,5 +37,5 @@ export default {
     return commands;
   },
 
-  '*.{md,mdx}': ['prettier --check'],
+  '*.{md,mdx}': ['markdownlint-cli2', 'prettier --check'],
 };
