@@ -1,0 +1,26 @@
+# Copyright (c) 2026 Aukha Saukha and its affiliates.
+# SPDX-License-Identifier: MIT
+
+# Build
+dist/
+
+
+# Cache
+.astro/
+.firebase/
+
+
+# Coverage
+coverage/
+
+
+# Dependencies
+node_modules/
+
+
+# Lock files
+pnpm-lock.yaml
+
+
+# pnpm
+.pnpm-store/
