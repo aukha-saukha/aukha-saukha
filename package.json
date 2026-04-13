@@ -10,13 +10,17 @@
     "markdownlint-cli2": "^0.22.0",
     "micromatch": "^4.0.8",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1"
   },
   "name": "aukha-saukha",
   "scripts": {
-    "lint": "pnpm run lint:formatting && pnpm run lint:markdown",
+    "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:styles",
     "lint:formatting": "prettier --list-different \"**/*.{astro,css,html,js,json,jsx,md,mdx,scss,ts,tsx}\"",
     "lint:markdown": "markdownlint-cli2",
+    "lint:styles": "stylelint --allow-empty-input '**/*.{css,scss}'",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -6,7 +6,7 @@ import micromatch from 'micromatch';
 export default {
   '*.{astro,js,jsx,ts,tsx}': ['prettier --check'],
 
-  '*.{css,scss}': ['prettier --check'],
+  '*.{css,scss}': ['prettier --check', 'stylelint'],
 
   '*.html': ['prettier --check'],
 
