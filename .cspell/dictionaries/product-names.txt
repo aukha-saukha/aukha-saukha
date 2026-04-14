@@ -1,0 +1,6 @@
+# Product, organization, and proper-name spellings specific to this repo.
+# Examples: app name, company/group names, internal product names, branded feature names, and
+# third-party vendors.
+
+Aukha
+Saukha

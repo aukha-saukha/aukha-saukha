@@ -1,0 +1,2 @@
+# Hindi language terms, transliterations, and cultural references.
+# Examples: शब्द

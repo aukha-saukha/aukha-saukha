@@ -4,6 +4,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "commitizen": "^4.3.1",
+    "cspell": "^10.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
@@ -17,9 +18,10 @@
   },
   "name": "aukha-saukha",
   "scripts": {
-    "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:styles",
+    "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:spellings && pnpm run lint:styles",
     "lint:formatting": "prettier --list-different \"**/*.{astro,css,html,js,json,jsx,md,mdx,scss,ts,tsx}\"",
     "lint:markdown": "markdownlint-cli2",
+    "lint:spellings": "cspell --cache --cache-strategy content --no-progress .",
     "lint:styles": "stylelint --allow-empty-input '**/*.{css,scss}'",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
