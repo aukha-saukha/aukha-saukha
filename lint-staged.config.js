@@ -3,18 +3,19 @@
 
 import micromatch from 'micromatch';
 
+const cspellCommand = 'cspell --cache --cache-strategy content --no-must-find-files --no-progress';
+
 export default {
-  '*.{astro,js,jsx,ts,tsx}': ['prettier --check'],
+  '*.{astro,js,jsx,ts,tsx}': [cspellCommand, 'prettier --check'],
 
-  '*.{css,scss}': ['prettier --check', 'stylelint'],
+  '*.{css,scss}': [cspellCommand, 'prettier --check', 'stylelint'],
 
-  '*.html': ['prettier --check'],
+  '*.html': [cspellCommand, 'prettier --check'],
 
   '*.{json,jsonc}': (files) => {
     // Files to skip
     const ignoreList = [
       '**/package.json',
-      '**/.vscode/cspell.json',
       '**/.vscode/extensions.json',
       '**/.vscode/settings.json',
     ];
@@ -28,7 +29,8 @@ export default {
 
     // Only spellcheck files not in the ignore list
     if (filesToSpellcheck.length > 0) {
-      // TODO: Add cspell command once it is installed.
+      const spellcheckArgs = filesToSpellcheck.map((file) => `"${file}"`).join(' ');
+      commands.push(`${cspellCommand} ${spellcheckArgs}`);
     }
 
     // Check format of all staged JSON files
@@ -37,5 +39,7 @@ export default {
     return commands;
   },
 
-  '*.{md,mdx}': ['markdownlint-cli2', 'prettier --check'],
+  '*.{md,mdx}': [cspellCommand, 'markdownlint-cli2', 'prettier --check'],
+
+  '.vscode/*.code-snippets': [cspellCommand],
 };

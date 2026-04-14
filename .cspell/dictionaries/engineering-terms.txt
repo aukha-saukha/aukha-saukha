@@ -1,0 +1,16 @@
+# Tooling and engineering vocabulary that is project-approved but not reliably covered by upstream
+# dictionaries.
+# Examples: architectural patterns, config vocabulary, dev tools, jargons, library names,
+# nonstandard technical terms etc.
+
+code-snippets
+commitizen
+commitlint
+cspell
+lint-staged
+markdownlint
+micromatch
+mozmm
+prettier
+stylelint
+unnamespaced

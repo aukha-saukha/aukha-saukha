@@ -1,0 +1,2 @@
+# App and business-domain vocabulary should live here.
+# Examples: industry-specific words related to the project.
