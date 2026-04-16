@@ -4,6 +4,7 @@
   },
   "description": "Code repository for the Aukha Saukha app",
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "commitizen": "^4.3.1",
@@ -17,21 +18,26 @@
     "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^17.6.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-order": "^8.1.1"
+    "stylelint-order": "^8.1.1",
+    "typescript": "^5.9.0"
   },
   "name": "aukha-saukha",
   "private": true,
   "scripts": {
     "build": "astro build",
+    "check": "astro check",
     "dev": "astro dev",
     "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:spellings && pnpm run lint:styles",
     "lint:formatting": "prettier --list-different \"**/*.{astro,css,html,js,json,jsx,md,mdx,scss,ts,tsx}\"",
     "lint:markdown": "markdownlint-cli2",
     "lint:spellings": "cspell --cache --cache-strategy content --no-progress .",
     "lint:styles": "stylelint --allow-empty-input '**/*.{css,scss}'",
+    "preflight": "pnpm run verify && astro preview",
     "prepare": "husky",
     "preview": "astro preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "verify": "pnpm run typecheck && astro check && astro build"
   },
   "type": "module",
   "version": "1.0.0"
