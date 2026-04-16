@@ -1,4 +1,7 @@
 {
+  "dependencies": {
+    "astro": "^6.1.7"
+  },
   "description": "Code repository for the Aukha Saukha app",
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
@@ -17,13 +20,17 @@
     "stylelint-order": "^8.1.1"
   },
   "name": "aukha-saukha",
+  "private": true,
   "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
     "lint": "pnpm run lint:formatting && pnpm run lint:markdown && pnpm run lint:spellings && pnpm run lint:styles",
     "lint:formatting": "prettier --list-different \"**/*.{astro,css,html,js,json,jsx,md,mdx,scss,ts,tsx}\"",
     "lint:markdown": "markdownlint-cli2",
     "lint:spellings": "cspell --cache --cache-strategy content --no-progress .",
     "lint:styles": "stylelint --allow-empty-input '**/*.{css,scss}'",
     "prepare": "husky",
+    "preview": "astro preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
