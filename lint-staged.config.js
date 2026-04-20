@@ -4,9 +4,10 @@
 import micromatch from 'micromatch';
 
 const cspellCommand = 'cspell --cache --cache-strategy content --no-must-find-files --no-progress';
+const eslintCommand = 'eslint --cache';
 
 export default {
-  '*.{astro,js,jsx,ts,tsx}': [cspellCommand, 'prettier --check'],
+  '*.{astro,js,jsx,mjs,ts,tsx}': [cspellCommand, eslintCommand, 'prettier --check'],
 
   '*.{css,scss}': [cspellCommand, 'prettier --check', 'stylelint'],
 
