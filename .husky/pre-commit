@@ -3,9 +3,9 @@
 # Copyright (c) 2026 Aukha Saukha and its affiliates.
 # SPDX-License-Identifier: MIT
 
-set -eou pipefail
+set -euo pipefail
 
-./scripts/validate-local-branch.sh
+bash ./scripts/validate-branch.sh
 
 if ! command -v pnpm >/dev/null 2>&1; then
   echo "❌ pnpm is required but not installed."
